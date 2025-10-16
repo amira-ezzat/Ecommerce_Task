@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../core/components/custom_app_bar.dart';
 import '../../core/styles/app_texts.dart';
 import '../../logic/favorites/favorites_bloc.dart';
 import '../../logic/favorites/favorites_state.dart';
@@ -11,17 +12,17 @@ class FavoritesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: AppTexts(data: 'Favorites').Bold20(),
-        centerTitle: true,
+      appBar:CustomAppBar(
+        title: 'Favorites',
       ),
+
       body: BlocBuilder<FavoritesBloc, FavoritesState>(
         builder: (context, state) {
           if (state.favoriteProducts.isEmpty) {
             return Center(
               child: AppTexts(
                 data: 'You have no favorites yet.',
-              ).SemiBold16(color: Colors.grey),
+              ).SemiBold16(context,color: Colors.grey),
             );
           }
 
@@ -29,7 +30,7 @@ class FavoritesScreen extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
               maxCrossAxisExtent: 200,
-              childAspectRatio: 0.75,
+              childAspectRatio: 1.0,
               crossAxisSpacing: 8.0,
               mainAxisSpacing: 8.0,
             ),

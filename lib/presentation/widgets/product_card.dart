@@ -11,6 +11,14 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
+    final Color cardColor = isDarkMode ? const Color(0xFF1E1E1E) : Colors.white;
+    final Color textColor = isDarkMode ? Colors.white : Colors.black87;
+    final Color priceColor = isDarkMode ? Colors.white : Colors.black;
+    final Color oldPriceColor = isDarkMode ? Colors.grey.shade500 : AppColors.grey2;
+    final Color iconColor = isDarkMode ? Colors.amber : AppColors.yellow;
+
     return InkWell(
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(
@@ -20,7 +28,7 @@ class ProductCard extends StatelessWidget {
       borderRadius: BorderRadius.circular(10),
       child: Card(
         elevation: 0,
-        color: Colors.white,
+        color: cardColor,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,7 +47,7 @@ class ProductCard extends StatelessWidget {
                           : const Center(child: CircularProgressIndicator(strokeWidth: 2));
                     },
                     errorBuilder: (context, error, stackTrace) {
-                      return const Icon(Icons.error);
+                      return const Icon(Icons.error, color: Colors.redAccent);
                     },
                   ),
                 ),
@@ -55,37 +63,37 @@ class ProductCard extends StatelessWidget {
                     children: [
                       Expanded(
                         child: AppTexts(
-                         data:  product.title,
+                          data: product.title,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                        ).SemiBold14(),
+                        ).SemiBold14(context, color: textColor),
                       ),
                       const SizedBox(width: 6),
                       Row(
                         children: [
-                           Icon(Icons.star, color: AppColors.yellow, size: 14),
+                          Icon(Icons.star, color: iconColor, size: 14),
+                          const SizedBox(width: 2),
                           AppTexts(
                             data: product.rating.rate.toStringAsFixed(1),
-                          ).SemiBold14(),
+                          ).SemiBold14(context, color: textColor),
                         ],
                       ),
                     ],
                   ),
 
                   const SizedBox(height: 6),
+
                   Row(
-
                     children: [
-                    AppTexts(
-                      data:  '\$${product.price.toStringAsFixed(2)}',
-                    ).SemiBold14(),
-                    SizedBox(width: 22,),
-                    AppTexts(
-                      data:  '\$${1299}',
-                    ).SemiBold14(color: AppColors.grey2),
-                  ],
-                  )
-
+                      AppTexts(
+                        data: '\$${product.price.toStringAsFixed(2)}',
+                      ).SemiBold14(context, color: priceColor),
+                      const SizedBox(width: 22),
+                      AppTexts(
+                        data: '\$1299',
+                      ).SemiBold14(context, color: oldPriceColor),
+                    ],
+                  ),
                 ],
               ),
             ),

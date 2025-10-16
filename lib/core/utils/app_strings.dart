@@ -1,10 +1,3 @@
-/*
-**********Project Name: hoshi_app
-**********File Name: app_strings
-**********Created At: 16-April-2025
-**********Author: Rasha Omran
-**********Description: 
-*/
 
 class AppArabicStrings {}
 

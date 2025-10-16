@@ -6,10 +6,10 @@ import '../../core/utils/app_icons.dart';
 import '../../core/utils/app_images.dart';
 import '../../logic/cart/cart_bloc.dart';
 import '../../logic/cart/cart_state.dart';
-import 'cart_screen.dart';
+import 'cart/cart_screen.dart';
 import 'favorites_screen.dart';
-import 'home_screen.dart';
-import 'placeholder_screen.dart';
+import 'home/home_screen.dart';
+import 'profile_screen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class MainScreen extends StatefulWidget {
@@ -44,11 +44,23 @@ class _MainScreenState extends State<MainScreen> {
     required int index,
   }) {
     final bool isSelected = _selectedIndex == index;
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
+    Color iconColor;
+    Color textColor;
+
+    if (isSelected) {
+      iconColor = isDarkMode ? Colors.white : AppColors.white;
+      textColor = isDarkMode ? Colors.white : AppColors.white;
+    } else {
+      iconColor = isDarkMode ? Colors.white70 : AppColors.grey7;
+      textColor = isDarkMode ? Colors.white70 : AppColors.grey7;
+    }
 
     return AnimatedContainer(
       duration: const Duration(milliseconds: 250),
       padding: EdgeInsets.symmetric(
-        horizontal: isSelected ? 6 : 0, // قللت الـ padding لتجنب overflow
+        horizontal: isSelected ? 6 : 0,
         vertical: 6,
       ),
       decoration: BoxDecoration(
@@ -62,16 +74,15 @@ class _MainScreenState extends State<MainScreen> {
             isSelected ? activeIconPath : iconPath,
             height: 22,
             width: 22,
-            color: isSelected ? AppColors.white : AppColors.grey7,
+            color: iconColor,
           ),
           if (isSelected) ...[
             const SizedBox(width: 4),
             Flexible(
               child: AppTexts(
-               data: label,
+                data: label,
                 overflow: TextOverflow.ellipsis,
-
-              ).medium16White(),
+              ).medium14(context, color: textColor),
             ),
           ]
         ],
@@ -81,6 +92,7 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
