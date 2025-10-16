@@ -10,7 +10,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<FetchHomeData>((event, emit) async {
       emit(HomeLoading());
       try {
-        // Step 2: Corrected getProducts to fetchProducts.
         final products = await apiService.fetchProducts();
         final categories = await apiService.getCategories();
         emit(HomeLoaded(products: products, categories: categories));

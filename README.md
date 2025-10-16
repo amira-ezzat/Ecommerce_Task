@@ -1,16 +1,45 @@
-# ecommerce_task
+# 🛍️ E-Commerce Task
 
-A new Flutter project.
+A Flutter e-commerce demo app showcasing clean architecture, dark mode, favorites, cart functionality, and category filtering — built using **Flutter**, **Bloc**, and **REST API**.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+##  Features
 
-A few resources to get you started if this is your first Flutter project:
+✅ **Home Screen** — Displays all products dynamically with category filtering  
+✅ **Product Details Page** — Shows product info, image, rating, and price  
+✅ **Cart Management** — Add, remove, and update product quantities  
+✅ **Favorites** — Add or remove favorite products easily  
+✅ **Dark Mode** — Full dark/light theme switching  
+✅ **Bloc State Management** — Clean and scalable app structure
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+##  State Management
+
+Used **Flutter Bloc / Cubit** for predictable, reactive state handling.
+
+**Why Bloc?**
+- Separation between UI and logic
+- Easy to maintain and test
+- Reactive UI updates when cart/favorites change
+
+## API Endpoints Used
+
+| Method | Endpoint |
+|--------|----------|
+| GET | https://fakestoreapi.com/products |
+| GET | https://fakestoreapi.com/products/categories |
+| GET | https://fakestoreapi.com/products/category/{category} |
+| GET | https://fakestoreapi.com/products/{id} |
+
+## Setup Instructions
+
+1. Clone the repository:
+   git clone https://github.com/amira-ezzat/Ecommerce_Task.git
+2. Navigate to the project directory:
+cd Ecommerce_Task
+3. Install dependencies:
+flutter pub get
+4. Run the app:
+flutter run
