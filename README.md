@@ -43,3 +43,12 @@ cd Ecommerce_Task
 flutter pub get
 4. Run the app:
 flutter run
+## 📱 App Screenshots
+
+| Home Screen | Product Details | Cart Page |
+|--------------|----------------|-----------|
+| ![Home](screenshots/home.png) | ![Details](screenshots/details.png) | ![Cart](screenshots/cart.png) |
+
+| Favorites | Dark Mode |
+|------------|------------|
+| ![Favorites](screenshots/favorites.png) | ![Dark Mode](screenshots/dark_mode.png) |
